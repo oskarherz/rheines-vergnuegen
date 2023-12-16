@@ -7,6 +7,7 @@ import { classNames } from '@rheine/(utils)/classNames';
 
 
 export function HeroTitle() {
+
   const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export function HeroTitle() {
         className="text-sm lg:text-xl leading-[1.5] text-white font-extralight font-sans">
         Rheines-Event GmbH präsentiert
       </motion.h2>
-      <h1 className="sr-only">Rheines Vergnügen</h1>
+      <h1 className="sr-only">R(h)eines Vergnügen</h1>
       <h2 className="w-fit relative -mb-8 text-[80px] sm:text-[96px] md:text-[128px] lg:text-[160px] leading-[1.1] h-26 md:h-32 lg:h-40 tracking-tighter text-white">
         <AnimatedLetters text="Rheines" charClassName="z-10" /><br/>
         <motion.svg
@@ -81,10 +82,14 @@ function AnimatedLetters({ text, charClassName }: { text: string, charClassName?
       className="inline-flex overflow-hidden">
       {text.split('').map((char, i) => (
         <motion.span
+          key={`${text}-char-at-${i}`}
           transition={{ delay: i * 0.1 }}
           variants={letterVariants}
-          className={`${charClassName} last:pr-1`}
-          key={`${text}-char-at-${i}`}>
+          className={`
+            ${charClassName}
+            ${char === 'h' ? 'text-gray-100 opacity-50' : ''}
+            last:pr-1 !overflow-visible
+          `}>
           {char}
         </motion.span>
       ))}

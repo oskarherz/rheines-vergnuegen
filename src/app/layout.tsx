@@ -4,6 +4,7 @@ import { Bellefair, Forum, Kantumruy_Pro, Spectral } from 'next/font/google';
 import { classNames } from '@rheine/(utils)/classNames';
 import { Footer } from './(components)/Footer';
 import { Titlebar } from './(components)/Titlebar';
+import { Toaster } from './(components)/Toaster/toaster';
 
 
 import './globals.css';
@@ -34,7 +35,7 @@ const spectral = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: 'Rheines Vergnügen',
+  title: 'R(h)eines Vergnügen',
   description: 'Ihre exklusive Event-Location in Rheine',
   viewport: 'height=device-height, width=device-width, initial-scale=1.0, viewport-fit=cover',
 }
@@ -43,17 +44,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html style={{ backgroundColor: '#171717' }} lang="de">
       <body
-        // style={{ margin: 'env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)' }}
         className={classNames(
           bellefair.variable,
           forum.variable,
           kantumruyPro.variable,
           spectral.variable,
-          "relative font-body bg-[#171717]"
+          "relative font-body bg-[#171717] [&:has(.no-scroll)]:overflow-hidden"
         )}>
         <Titlebar className="fixed inset-x-0 top-0 z-50" />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
