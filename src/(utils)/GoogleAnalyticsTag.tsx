@@ -11,7 +11,7 @@ export function GoogleAnalyticsTag() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TOKEN}');
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TOKEN}', {'anonymize_ip': true});
         `}
       </Script>
     </>
