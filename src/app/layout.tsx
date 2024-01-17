@@ -8,6 +8,7 @@ import { Toaster } from './(components)/Toaster/toaster';
 
 
 import './globals.css';
+import { GoogleAnalyticsTag } from '@rheine/(utils)/GoogleAnalyticsTag';
 
 
 const bellefair = Bellefair({
@@ -43,6 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html style={{ backgroundColor: '#171717' }} lang="de">
+      <GoogleAnalyticsTag />
       <body
         className={classNames(
           bellefair.variable,
